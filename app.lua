@@ -5,6 +5,7 @@ local function App()
   local app_launch_time = G.TIMER.getTime()
   local keys_down = {}
 
+
   function self.Exit()
     love.event.quit()
   end
