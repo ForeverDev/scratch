@@ -2,14 +2,15 @@ local function App()
 
   local self = G.CLASSES.BASE()
 
+  local app_launch_time = G.TIMER.getTime()
   local keys_down = {}
 
   function self.Exit()
-
+    love.event.quit()
   end
 
   function self.GetElapsedTime()
-
+    return G.TIMER.getTime() - app_launch_time
   end
 
   function self.Update(dt)
@@ -23,7 +24,7 @@ local function App()
   function self.KeyPressed(key)
     keys_down[key] = true
     if key == "escape" then
-      love.event.quit()
+      self.Exit()
     end
   end
 
