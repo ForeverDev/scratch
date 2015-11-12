@@ -3,10 +3,11 @@ local App = {}
 function App.new()
 
   local self = G.CLASSES.BASE()
+  self.classname = "App"
 
   local app_launch_time = G.TIMER.getTime()
   local keys_down = {}
-  local uis = {}
+  local screen = G.CLASSES.SCREEN.new(0, 0, G.CONST.WIDTH, G.CONST.HEIGHT)
 
   function self.Exit()
     love.event.quit()
@@ -21,9 +22,7 @@ function App.new()
   end
 
   function self.Draw()
-    for i, v in ipairs(uis) do
-      v.Draw()
-    end
+    screen.Draw()
   end
 
   function self.KeyPressed(key)
@@ -37,13 +36,25 @@ function App.new()
     keys_down[key] = nil
   end
 
+  function self.MousePressed(mx, my, b)
+    screen.RegisterClick(mx, my, b, true)
+  end
+
+  function self.MouseReleased(mx, my, b)
+    screen.RegisterClick(mx, my, b, false)
+  end
+
   do
-    local frame = G.CLASSES.FRAME.new(20, 20, 200, 150)
-    frame.AddChild(G.CLASSES.FRAME.new(20, 20, 50, 50))
-    frame.GetChild(1).SetColor(255, 0, 0)
-    frame.GetChild(1).AddChild(G.CLASSES.FRAME.new(20, 20, 25, 25))
-    frame.GetChild(1).GetChild(1).SetColor(0, 0, 255)
-    table.insert(uis, frame)
+    screen.SetColor(0, 0, 0, 255)
+
+    local frame = G.CLASSES.FRAME.new(20, 20, 300, 300)
+    local button = G.CLASSES.BUTTON.new(20, 20, 100, 100, "Click me!")
+    button.HookEvent("Mouse1Click", function(self, mx, my)
+      print(mx, my)
+    end)
+
+    frame.AddChild(button)
+    screen.AddChild(frame)
   end
 
   return self

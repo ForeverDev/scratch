@@ -7,11 +7,16 @@ function love.load()
   G = setmetatable({}, {__index = {
     DRAW        = love.graphics;
     WINDOW      = love.window;
+    MOUSe       = love.mouse;
     TIMER       = love.timer;
     IMAGE       = love.image;
     FILESYSTEM  = love.filesystem;
     CLASSES     = {};
     CORE        = {};
+    CONST       = {
+      WIDTH       = love.graphics.getWidth();
+      HEIGHT      = love.graphics.getHeight();
+    };
   }})
 
   -- dofile corefunc.lua
@@ -21,7 +26,9 @@ function love.load()
   -- load classes
   G.CLASSES.BASE        = G.CORE.LOADFILE("baseclass.lua")
   G.CLASSES.UI          = G.CORE.LOADFILE("ui.lua")
+  G.CLASSES.BUTTON      = G.CORE.LOADFILE("button.lua")
   G.CLASSES.FRAME       = G.CORE.LOADFILE("frame.lua")
+  G.CLASSES.SCREEN      = G.CORE.LOADFILE("screen.lua")
   G.CLASSES.APP         = G.CORE.LOADFILE("app.lua")
 
   -- define an instance of App.  This instance is where all
@@ -44,4 +51,12 @@ end
 
 function love.keyreleased(key)
   G.MAIN.KeyReleased(key)
+end
+
+function love.mousepressed(mx, my, b)
+  G.MAIN.MousePressed(mx, my, b)
+end
+
+function love.mousereleased(mx, my, b)
+  G.MAIN.MouseReleased(mx, my, b)
 end

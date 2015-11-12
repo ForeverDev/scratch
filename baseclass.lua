@@ -1,11 +1,10 @@
-local function Base(classname)
+local function Base()
 
   local self = {}
-
-  local classname = classname
+  self.classname = "Base"
 
   function self.InstanceOf(_classname)
-    return _classname == classname
+    return self.classname == _classname
   end
 
   function self.GetStorageLocation()
