@@ -2,7 +2,7 @@ local Screen = {}
 
 function Screen.new()
 
-  local self = G.CLASSES.FRAME.new(0, 0, G.CONST.WIDTH, G.CONST.HEIGHT)
+  local self = G.CLASSES.FRAME.new(0, G.CONST.WIDTH, 0, G.CONST.HEIGHT, 0, 0, 0, 0)
   self.classname = "Screen"
 
   function self.RegisterClick(mx, my, b, was_down)

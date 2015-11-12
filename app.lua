@@ -4,7 +4,7 @@ function App.new()
 
   local self = G.CLASSES.BASE()
   self.classname = "App"
-  self.screen = G.CLASSES.SCREEN.new(0, 0, G.CONST.WIDTH, G.CONST.HEIGHT)
+  self.screen = G.CLASSES.SCREEN.new(0, G.CONST.WIDTH, 0, G.CONST.HEIGHT, 0, 0, 0, 0)
 
   local app_launch_time = G.TIMER.getTime()
   local keys_down = {}

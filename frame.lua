@@ -1,8 +1,8 @@
 local Frame = {}
 
-function Frame.new(x, y, sx, sy)
+function Frame.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
 
-  local self = G.CLASSES.UI.new(x, y, sx, sy)
+  local self = G.CLASSES.UI.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
   self.classname = "Frame"
 
   local children = {}
@@ -17,8 +17,7 @@ function Frame.new(x, y, sx, sy)
 
   function self.AddChild(c)
     c.parent = self
-    c.absolute_x = self.absolute_x + c.x
-    c.absolute_y = self.absolute_y + c.y
+    c.UpdateDimensions()
     table.insert(children, c)
   end
 
@@ -40,22 +39,12 @@ function Frame.new(x, y, sx, sy)
     end
   end
 
-  function self.RegisterClickInChildren(mx, my)
-    for i, v in ipairs(children) do
-      if v.InstanceOf("Frame") then
-        v.RegisterClickInChildren(mx, my)
-      elseif v.InstanceOf("Button") then
-        v.RegusterClick()
-      end
-    end
-  end
-
   function self.Draw()
     if not self.visible then
       return
     end
     G.DRAW.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
-    G.DRAW.rectangle("fill", self.absolute_x, self.absolute_y, self.sx, self.sy)
+    G.DRAW.rectangle("fill", self.abs_position.x, self.abs_position.y, self.abs_size.x, self.abs_size.y)
     for i, v in ipairs(children) do
       v.Draw()
     end

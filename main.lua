@@ -8,7 +8,7 @@ function love.load()
     DRAW        = love.graphics;
     FONT        = love.font;
     WINDOW      = love.window;
-    MOUSe       = love.mouse;
+    MOUSE       = love.mouse;
     TIMER       = love.timer;
     IMAGE       = love.image;
     FILESYSTEM  = love.filesystem;

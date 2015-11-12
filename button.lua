@@ -1,8 +1,8 @@
 local Button = {}
 
-function Button.new(x, y, sx, sy, text)
+function Button.new(ssx, sox, ssy, soy, psx, pox, psy, poy, text)
 
-  local self = G.CLASSES.UI.new(x, y, sx, sy)
+  local self = G.CLASSES.UI.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
   self.classname = "Button"
   self.text = text or ""
 
@@ -29,9 +29,9 @@ function Button.new(x, y, sx, sy, text)
 
   function self.Draw()
     G.DRAW.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
-    G.DRAW.rectangle("fill", self.absolute_x, self.absolute_y, self.sx, self.sy)
+    G.DRAW.rectangle("fill", self.abs_position.x, self.abs_position.y, self.abs_size.x, self.abs_size.y)
     G.DRAW.setColor(0, 0, 0)
-    G.DRAW.printf(self.text, self.absolute_x - self.sx/2, self.absolute_y + self.sy/2 - G.DRAW.getFont():getHeight()/2, 200, "center")
+    G.DRAW.printf(self.text, self.abs_position.x - self.abs_size.x/2, self.abs_position.y + self.abs_size.y/2 - G.DRAW.getFont():getHeight()/2, 200, "center")
   end
 
   return self
