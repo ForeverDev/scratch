@@ -6,6 +6,7 @@ function love.load()
   -- contains the functions loaded from corefunc.lua
   G = setmetatable({}, {__index = {
     DRAW        = love.graphics;
+    FONT        = love.font;
     WINDOW      = love.window;
     MOUSe       = love.mouse;
     TIMER       = love.timer;
@@ -34,6 +35,10 @@ function love.load()
   -- define an instance of App.  This instance is where all
   -- of the work of the program is done.
   G.MAIN                = G.CLASSES.APP.new()
+
+  -- load the ui_sprite.lua file.  Doing so loads all UIs into
+  -- G.MAIN's screen
+  G.CORE.LOADFILE("ui_sheet.lua")
 
 end
 

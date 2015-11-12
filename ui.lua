@@ -38,10 +38,17 @@ function UI.new(x, y, sx, sy)
   end
 
   function self.SetColor(r, g, b, a)
-    self.color.r = r
-    self.color.g = g
-    self.color.b = b
-    self.color.a = a
+    if r and not (g and b) then
+      self.color.r = r
+      self.color.g = r
+      self.color.b = r
+      self.color.a = g or 255
+    else
+      self.color.r = r
+      self.color.g = g
+      self.color.b = b
+      self.color.a = a or 255
+    end
   end
 
   function self.SetVisible(v)

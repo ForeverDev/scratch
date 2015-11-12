@@ -31,7 +31,7 @@ function Button.new(x, y, sx, sy, text)
     G.DRAW.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
     G.DRAW.rectangle("fill", self.absolute_x, self.absolute_y, self.sx, self.sy)
     G.DRAW.setColor(0, 0, 0)
-    G.DRAW.printf(self.text, self.absolute_x - self.sx/2, self.absolute_y + self.sy/2, 200, "center")
+    G.DRAW.printf(self.text, self.absolute_x - self.sx/2, self.absolute_y + self.sy/2 - G.DRAW.getFont():getHeight()/2, 200, "center")
   end
 
   return self

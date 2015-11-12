@@ -4,10 +4,10 @@ function App.new()
 
   local self = G.CLASSES.BASE()
   self.classname = "App"
+  self.screen = G.CLASSES.SCREEN.new(0, 0, G.CONST.WIDTH, G.CONST.HEIGHT)
 
   local app_launch_time = G.TIMER.getTime()
   local keys_down = {}
-  local screen = G.CLASSES.SCREEN.new(0, 0, G.CONST.WIDTH, G.CONST.HEIGHT)
 
   function self.Exit()
     love.event.quit()
@@ -22,7 +22,7 @@ function App.new()
   end
 
   function self.Draw()
-    screen.Draw()
+    self.screen.Draw()
   end
 
   function self.KeyPressed(key)
@@ -37,25 +37,15 @@ function App.new()
   end
 
   function self.MousePressed(mx, my, b)
-    screen.RegisterClick(mx, my, b, true)
+    self.screen.RegisterClick(mx, my, b, true)
   end
 
   function self.MouseReleased(mx, my, b)
-    screen.RegisterClick(mx, my, b, false)
+    self.screen.RegisterClick(mx, my, b, false)
   end
 
   do
-    screen.SetColor(0, 0, 0, 255)
-
-    local frame = G.CLASSES.FRAME.new(20, 20, 300, 300)
-    local button = G.CLASSES.BUTTON.new(20, 20, 100, 100, "Click me!")
-    button.HookEvent("Mouse1Down", function(self, mx, my)
-      self.Translate(1, 0)
-    end)
-    button.SetColor(255, 0, 0)
-
-    frame.AddChild(button)
-    screen.AddChild(frame)
+    self.screen.SetColor(0, 0, 0, 255)
   end
 
   return self
