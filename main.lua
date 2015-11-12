@@ -11,7 +11,7 @@ function love.load()
     IMAGE       = love.image;
     FILESYSTEM  = love.filesystem;
     CLASSES     = {};
-    CORE        = {}
+    CORE        = {};
   }})
 
   -- dofile corefunc.lua
@@ -20,11 +20,13 @@ function love.load()
 
   -- load classes
   G.CLASSES.BASE        = G.CORE.LOADFILE("baseclass.lua")
+  G.CLASSES.UI          = G.CORE.LOADFILE("ui.lua")
+  G.CLASSES.FRAME       = G.CORE.LOADFILE("frame.lua")
   G.CLASSES.APP         = G.CORE.LOADFILE("app.lua")
 
   -- define an instance of App.  This instance is where all
   -- of the work of the program is done.
-  G.MAIN                = G.CLASSES.APP()
+  G.MAIN                = G.CLASSES.APP.new()
 
 end
 
