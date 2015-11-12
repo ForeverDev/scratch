@@ -49,9 +49,10 @@ function App.new()
 
     local frame = G.CLASSES.FRAME.new(20, 20, 300, 300)
     local button = G.CLASSES.BUTTON.new(20, 20, 100, 100, "Click me!")
-    button.HookEvent("Mouse1Click", function(self, mx, my)
-      print(mx, my)
+    button.HookEvent("Mouse1Down", function(self, mx, my)
+      self.Translate(1, 0)
     end)
+    button.SetColor(255, 0, 0)
 
     frame.AddChild(button)
     screen.AddChild(frame)

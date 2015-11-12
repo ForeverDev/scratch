@@ -17,7 +17,6 @@ function Screen.new()
               (b == "r" and was_down) and "Mouse2Down" or
               (b == "r") and "Mouse2Up" or "Unknown"
             )
-            print(event_type)
             v.FireMouseEvent(event_type, mx, my)
           end
         elseif v.InstanceOf("Frame") or v.InstanceOf("Screen") then

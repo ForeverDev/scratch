@@ -21,9 +21,20 @@ function UI.new(x, y, sx, sy)
 
   function self.MouseIsInBounds(mx, my)
     return (
-      mx > self.x and mx < self.x + self.sx and
-      my > self.y and my < self.y + self.sy
+      mx > self.absolute_x and mx < self.absolute_x + self.sx and
+      my > self.absolute_y and my < self.absolute_y + self.sy
     )
+  end
+
+  function self.Translate(x, y)
+    self.x = self.x + x
+    self.y = self.y + y
+    self.absolute_x = self.absolute_x + x
+    self.absolute_y = self.absolute_y + y
+  end
+
+  function self.SetPosition(x, y)
+
   end
 
   function self.SetColor(r, g, b, a)
