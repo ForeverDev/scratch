@@ -34,6 +34,14 @@ function Button.new(ssx, sox, ssy, soy, psx, pox, psy, poy, text)
     G.DRAW.printf(self.text, self.abs_position.x - self.abs_size.x/2, self.abs_position.y + self.abs_size.y/2 - G.DRAW.getFont():getHeight()/2, 200, "center")
   end
 
+  self.HookEvent("MouseEnter", function(self, mx, my)
+    self.color.a = math.max(self.color.a - 80, 0)
+  end)
+
+  self.HookEvent("MouseLeave", function(self, mx, my)
+    self.color.a = math.min(self.color.a + 80, 255)
+  end)
+
   return self
 
 end

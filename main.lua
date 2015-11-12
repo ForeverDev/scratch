@@ -65,3 +65,7 @@ end
 function love.mousereleased(mx, my, b)
   G.MAIN.MouseReleased(mx, my, b)
 end
+
+function love.mousemoved(mx, my, dx, dy)
+  G.MAIN.MouseMoved(mx, my, dx, dy)
+end

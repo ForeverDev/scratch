@@ -29,6 +29,7 @@ function UI.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
       offset = poy;
     };
   }
+  self.mouse_is_in_bounds = false
   self.parent = nil
   self.visible = true
   self.color = {

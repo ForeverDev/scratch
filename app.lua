@@ -44,6 +44,10 @@ function App.new()
     self.screen.RegisterClick(mx, my, b, false)
   end
 
+  function self.MouseMoved(mx, my, dx, dy)
+    self.screen.RegisterMouseMove(mx, my, dx, dy)
+  end
+
   do
     self.screen.SetColor(0, 0, 0, 255)
   end

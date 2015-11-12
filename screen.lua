@@ -27,6 +27,31 @@ function Screen.new()
     scan(self)
   end
 
+  function self.RegisterMouseMove(mx, my, dx, dy)
+    local scan;
+    scan = function(p)
+      for i, v in ipairs(p.GetChildren()) do
+        if v.MouseIsInBounds(mx, my) then
+          if not v.mouse_is_in_bounds then
+            if v.InstanceOf("Button") then
+              v.FireMouseEvent("MouseEnter", mx, my)
+            end
+          end
+          v.mouse_is_in_bounds = true
+        elseif v.mouse_is_in_bounds then
+          if v.InstanceOf("Button") then
+            v.FireMouseEvent("MouseLeave", mx, my)
+          end
+          v.mouse_is_in_bounds = false
+        end
+        if v.InstanceOf("Frame") or v.InstanceOf("Screen") then
+          scan(v)
+        end
+      end
+    end
+    scan(self)
+  end
+
   return self
 
 end
