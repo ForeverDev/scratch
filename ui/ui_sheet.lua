@@ -3,6 +3,7 @@ local width = G.CONST.WIDTH
 local height = G.CONST.HEIGHT
 local Frame = G.CLASSES.FRAME
 local Button = G.CLASSES.BUTTON
+local Indent = G.CLASSES.INDENTBLOCK
 
 -- create a tab on the left side of the screen
 -- that holds all of the scratch blocks
@@ -49,4 +50,13 @@ do
       math_holder.AddChild(test_block)
     tab.AddChild(math_holder)
   screen.AddChild(tab)
+end
+
+do
+  local test = Indent.new(0, 400, 0, 400, 0, 400, 0, 400)
+  test.SetColor(255, 0, 0)
+    local test2 = Indent.new(0, 200, 0, 200, 0, 0, 0, 0)
+    test2.SetColor(0, 0, 255)
+    test.AddChild(test2)
+  screen.AddChild(test)
 end

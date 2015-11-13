@@ -28,6 +28,9 @@ function Button.new(ssx, sox, ssy, soy, psx, pox, psy, poy, text)
   end
 
   function self.Draw()
+    if not self.visible then
+      return
+    end
     G.DRAW.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
     G.DRAW.rectangle("fill", self.abs_position.x, self.abs_position.y, self.abs_size.x, self.abs_size.y)
     G.DRAW.setColor(0, 0, 0)

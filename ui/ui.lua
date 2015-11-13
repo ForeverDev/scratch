@@ -73,12 +73,28 @@ function UI.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
     )
   end
 
-  function self.Translate(x, y)
-
+  function self.Translate(sx, ox, sy, oy)
+    self.position.x.scale = self.position.x.scale + sx
+    self.position.x.offset = self.position.x.offset + ox
+    self.position.y.scale = self.position.y.scale + sy
+    self.position.y.offset = self.position.y.offset + oy
+    self.UpdateDimensions()
   end
 
-  function self.SetPosition(x, y)
+  function self.SetPosition(sx, ox, sy, oy)
+    self.position.x.scale = sx
+    self.position.x.offset = ox
+    self.position.y.scale = sy
+    self.position.y.offset = oy
+    self.UpdateDimensions()
+  end
 
+  function self.SetSize(sx, ox, sy, oy)
+    self.size.x.scale = sx
+    self.size.x.offset = ox
+    self.size.y.scale = sy
+    self.size.y.offset = oy
+    self.UpdateDimensions()
   end
 
   function self.SetColor(r, g, b, a)

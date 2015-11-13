@@ -26,10 +26,12 @@ function love.load()
 
   -- load classes
   G.CLASSES.BASE        = G.CORE.LOADFILE("baseclass.lua")
-  G.CLASSES.UI          = G.CORE.LOADFILE("ui.lua")
-  G.CLASSES.BUTTON      = G.CORE.LOADFILE("button.lua")
-  G.CLASSES.FRAME       = G.CORE.LOADFILE("frame.lua")
-  G.CLASSES.SCREEN      = G.CORE.LOADFILE("screen.lua")
+  G.CLASSES.UI          = G.CORE.LOADFILE("ui/ui.lua")
+  G.CLASSES.BUTTON      = G.CORE.LOADFILE("ui/button.lua")
+  G.CLASSES.FRAME       = G.CORE.LOADFILE("ui/frame.lua")
+  G.CLASSES.SCREEN      = G.CORE.LOADFILE("ui/screen.lua")
+  G.CLASSES.BASEBLOCK   = G.CORE.LOADFILE("blocks/baseblock.lua")
+  G.CLASSES.INDENTBLOCK = G.CORE.LOADFILE("blocks/indent_block.lua")
   G.CLASSES.APP         = G.CORE.LOADFILE("app.lua")
 
   -- define an instance of App.  This instance is where all
@@ -38,7 +40,7 @@ function love.load()
 
   -- load the ui_sprite.lua file.  Doing so loads all UIs into
   -- G.MAIN's screen
-  G.CORE.LOADFILE("ui_sheet.lua")
+  G.CORE.LOADFILE("ui/ui_sheet.lua")
 
 end
 
