@@ -6,6 +6,8 @@ function Frame.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
   self.classname = "Frame"
   self.children = {}
 
+  local draw_when_invis = false
+
   function self.GetChildren()
     return self.children
   end
@@ -34,12 +36,18 @@ function Frame.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
     end
   end
 
+  function self.DrawChildrenWhenNotVisible(d)
+    draw_when_invis = d and true or false
+  end
+
   function self.Draw()
-    if not self.visible then
+    if not self.visible and not draw_when_invis then
       return
     end
-    G.DRAW.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
-    G.DRAW.rectangle("fill", self.abs_position.x, self.abs_position.y, self.abs_size.x, self.abs_size.y)
+    if self.visible then
+      G.DRAW.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
+      G.DRAW.rectangle("fill", self.abs_position.x, self.abs_position.y, self.abs_size.x, self.abs_size.y)
+    end
     for i, v in ipairs(self.children) do
       v.Draw()
     end
