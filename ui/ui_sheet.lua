@@ -67,7 +67,7 @@ do
         local on_start = Button.new(0, 100, 0, 50, 0.5, -50, 0, 50, "OnStart")
         on_start.SetColor(colors.events)
         on_start.HookEvent("Mouse1Down", function(self, mx, my)
-          spawn("IndentBlock")
+          spawn("OnStartBlock")
         end)
         event_holder.AddChild(on_start)
     local math_holder = Frame.new(1, 0, 1, -100, 0, 0, 0, 100)

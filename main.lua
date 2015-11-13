@@ -25,14 +25,15 @@ function love.load()
   G.FILESYSTEM.load("corefunc.lua")()
 
   -- load classes
-  G.CLASSES.BASE        = G.CORE.LOADFILE("base_class.lua")
-  G.CLASSES.UI          = G.CORE.LOADFILE("ui/ui.lua")
-  G.CLASSES.BUTTON      = G.CORE.LOADFILE("ui/button.lua")
-  G.CLASSES.FRAME       = G.CORE.LOADFILE("ui/frame.lua")
-  G.CLASSES.SCREEN      = G.CORE.LOADFILE("ui/screen.lua")
-  G.CLASSES.BASEBLOCK   = G.CORE.LOADFILE("blocks/base_block.lua")
-  G.CLASSES.INDENTBLOCK = G.CORE.LOADFILE("blocks/indent_block.lua")
-  G.CLASSES.APP         = G.CORE.LOADFILE("app.lua")
+  G.CLASSES.BASE          = G.CORE.LOADFILE("base_class.lua")
+  G.CLASSES.UI            = G.CORE.LOADFILE("ui/ui.lua")
+  G.CLASSES.BUTTON        = G.CORE.LOADFILE("ui/button.lua")
+  G.CLASSES.FRAME         = G.CORE.LOADFILE("ui/frame.lua")
+  G.CLASSES.SCREEN        = G.CORE.LOADFILE("ui/screen.lua")
+  G.CLASSES.BASEBLOCK     = G.CORE.LOADFILE("blocks/base_block.lua")
+  G.CLASSES.INDENTBLOCK   = G.CORE.LOADFILE("blocks/indent_block.lua")
+  G.CLASSES.ONSTARTBLOCK  = G.CORE.LOADFILE("blocks/events/on_start.lua")
+  G.CLASSES.APP           = G.CORE.LOADFILE("app.lua")
 
   -- define an instance of App.  This instance is where all
   -- of the work of the program is done.

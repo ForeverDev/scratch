@@ -5,7 +5,7 @@ local IndentBlock = {
   RIGHT_BORDER    = 10;
 }
 
-function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
+function IndentBlock.new(psx, pox, psy, poy)
 
   -- note that the size of an IndentBlock is the
   -- size BETWEEN the top and bottom component,
@@ -14,7 +14,7 @@ function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
   -- the top-left position of an IndentBlock is
   -- still the top-left corner, including the
   -- top component
-  local self = G.CLASSES.BASEBLOCK.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
+  local self = G.CLASSES.BASEBLOCK.new(0, 200, 0, 100, psx, pox, psy, poy)
   self.classname = "IndentBlock"
   self.draw_frame = G.CLASSES.FRAME.new(1, 0, 1, 0, 0, 0, 0, 0)
   -- self.contained is a table that contains blocks stored
