@@ -18,7 +18,7 @@ function App.new()
   end
 
   function self.Update(dt)
-
+    self.screen.Update(dt)
   end
 
   function self.Draw()

@@ -11,6 +11,15 @@ local function Base()
     return tostring(self)
   end
 
+  function self.Update(dt)
+
+  end
+
+  function self.Draw()
+
+  end
+
+
   return self
 
 end

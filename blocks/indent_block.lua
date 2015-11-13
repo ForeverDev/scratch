@@ -1,8 +1,8 @@
 local IndentBlock = {
-  TOP_BORDER      = 25;
-  LEFT_BORDER     = 25;
-  BOTTOM_BORDER   = 25;
-  RIGHT_BORDER    = 25;
+  TOP_BORDER      = 10;
+  LEFT_BORDER     = 10;
+  BOTTOM_BORDER   = 10;
+  RIGHT_BORDER    = 10;
 }
 
 function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
@@ -48,6 +48,8 @@ function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
     self.UpdateDimensions()
     self.draw_frame.SetSize(1, 0, 1, 0)
     self.draw_frame.UpdateDimensions()
+    self.click_detector.SetSize(1, 0, 1, 0)
+    self.click_detector.UpdateDimensions()
     self.components.top.SetSize(1, 0, 0, IndentBlock.TOP_BORDER)
     self.components.top.SetPosition(0, 0, 0, 0)
     self.components.left.SetSize(0, IndentBlock.LEFT_BORDER, 1, -IndentBlock.TOP_BORDER)
@@ -102,7 +104,8 @@ function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
 
   function self.UpdateContained()
     for i, v in ipairs(self.contained) do
-      v.UpdateDimensions()
+      v.UpdateComponents()
+      v.UpdateContained()
     end
   end
 
@@ -114,6 +117,14 @@ function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
     self.draw_frame.Draw()
     for i, v in pairs(self.contained) do
       v.Draw()
+    end
+  end
+
+  function self.Update(dt)
+    if self.GetSelect() then
+      self.SetPosition(0, G.MOUSE:getX() - 15, 0, G.MOUSE:getY() - 15)
+      self.UpdateComponents()
+      self.UpdateContained()
     end
   end
 
