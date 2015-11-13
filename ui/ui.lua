@@ -97,7 +97,25 @@ function UI.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
     self.UpdateDimensions()
   end
 
+  function self.CheckIfVisible()
+    if not self.visible then
+      return false
+    end
+    local parent = self.parent
+    while parent do
+      if not parent.visible then
+        return false
+      end
+      parent = parent.parent
+    end
+    return true
+  end
+
   function self.SetColor(r, g, b, a)
+    if type(r) == "table" then
+      self.SetColor(r[1], r[2], r[3], r[4])
+      return
+    end
     if r and not (g and b) then
       self.color.r = r
       self.color.g = r

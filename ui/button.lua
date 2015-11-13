@@ -21,7 +21,7 @@ function Button.new(ssx, sox, ssy, soy, psx, pox, psy, poy, text)
   end
 
   function self.FireMouseEvent(event_name, mx, my)
-    if not events[event_name] then
+    if not events[event_name] or not self.CheckIfVisible() then
       return
     end
     events[event_name](self, mx, my)

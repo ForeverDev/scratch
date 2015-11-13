@@ -100,6 +100,7 @@ function IndentBlock.new(ssx, sox, ssy, soy, psx, pox, psy, poy)
     else
       table.insert(self.children, c)
     end
+    self.UpdateContained()
   end
 
   function self.UpdateContained()

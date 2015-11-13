@@ -5,6 +5,7 @@ function App.new()
   local self = G.CLASSES.BASE()
   self.classname = "App"
   self.screen = G.CLASSES.SCREEN.new(0, G.CONST.WIDTH, 0, G.CONST.HEIGHT, 0, 0, 0, 0)
+  self.selected_block = nil
 
   local app_launch_time = G.TIMER.getTime()
   local keys_down = {}
@@ -15,6 +16,20 @@ function App.new()
 
   function self.GetElapsedTime()
     return G.TIMER.getTime() - app_launch_time
+  end
+
+  function self.SetBlockFocus(b)
+    if not b then
+      if self.selected_block then
+        self.selected_block.SetSelect(false)
+        self.selected_block = nil
+      end
+    else
+      if not self.selected_block then
+        b.SetSelect(true)
+        self.selected_block = b
+      end
+    end
   end
 
   function self.Update(dt)
@@ -42,6 +57,9 @@ function App.new()
 
   function self.MouseReleased(mx, my, b)
     self.screen.RegisterClick(mx, my, b, false)
+    if self.selected_block then
+      self.SetBlockFocus(nil)
+    end
   end
 
   function self.MouseMoved(mx, my, dx, dy)
